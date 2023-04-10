@@ -66,6 +66,15 @@
     <ClInclude Include="Factory\PizzaStore.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Factory\PizzaIngredientFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory\PizzaIngredients.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton\Singleton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Strategy\DucksTest.cpp">
@@ -78,6 +87,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Factory\FactoryMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Singleton\SingletonMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
