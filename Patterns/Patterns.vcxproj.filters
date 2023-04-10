@@ -39,12 +39,45 @@
     <ClInclude Include="Observer\Observer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Observer\Weather Station\WeatherData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Observer\Weather Station\IDisplayElement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Observer\Weather Station\WeatherDisplays.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Decorator\Beverage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Decorator\Coffee.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Decorator\CondimentDecorator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Decorator\CoffeeDecorators.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory\Pizza.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory\PizzaStore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Strategy\DucksTest.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Observer\ObserverMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Decorator\DecoratorMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Factory\FactoryMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

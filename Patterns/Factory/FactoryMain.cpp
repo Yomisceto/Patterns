@@ -4,12 +4,8 @@
 int main() {
 
 	PizzaStore* pPizza = new NYPizzaStore;
-	pPizza->orderPizza();
-
+	pPizza->orderPizza(PizzaStore::PizzaType::CheesePiza);
 	std::cout << std::endl;
-
-	pPizza = new ChicagoPizzaStore;
-	pPizza->orderPizza();
 
 	delete pPizza;
 	return 0;

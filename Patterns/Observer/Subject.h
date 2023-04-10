@@ -22,7 +22,7 @@ public:
 	
 	void Notify() override {
 		for (auto it = list_observer_.begin(); it != list_observer_.end(); ++it) {
-			(*it)->Update(message_);
+			(*it)->Update();
 		}
 	}
 
@@ -31,7 +31,7 @@ public:
 		Notify();
 	}
 
-
+	std::string GetMessage() const { return message_; }
 private:
 	std::list<IObserver*> list_observer_;
 	std::string message_;
