@@ -15,10 +15,9 @@ public:
 	~Observer() override {
 		std::cout << "bye, I was Observer - " << this->number_ << std::endl;
 	}
-
-	void Update(const std::string& message) override;
 	void RemoveFromList();
 	void Print();
+	void Update() override; 
 
 private:
 	Subject &subject_;
@@ -36,8 +35,8 @@ Observer::Observer(Subject& subject) : subject_(subject) {
 	this->number_ = Observer::index_;
 }
 
-void Observer::Update(const std::string& message) {
-	message_ = message;
+void Observer::Update() {
+	message_ = subject_.GetMessage();
 	Observer::Print();
 }
 

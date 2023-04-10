@@ -127,16 +127,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Decorator\Beverage.h" />
+    <ClInclude Include="Decorator\Coffee.h" />
+    <ClInclude Include="Decorator\CoffeeDecorators.h" />
+    <ClInclude Include="Decorator\CondimentDecorator.h" />
+    <ClInclude Include="Factory\PizzaIngredientFactory.h" />
+    <ClInclude Include="Factory\Pizza.h" />
+    <ClInclude Include="Factory\PizzaIngredients.h" />
+    <ClInclude Include="Factory\PizzaStore.h" />
     <ClInclude Include="Observer\IObserver.h" />
     <ClInclude Include="Observer\ISubject.h" />
     <ClInclude Include="Observer\Observer.h" />
     <ClInclude Include="Observer\Subject.h" />
+    <ClInclude Include="Observer\Weather Station\WeatherDisplays.h" />
+    <ClInclude Include="Observer\Weather Station\IDisplayElement.h" />
+    <ClInclude Include="Observer\Weather Station\WeatherData.h" />
     <ClInclude Include="Strategy\Duck.h" />
     <ClInclude Include="Strategy\DuckBehaviorsImpl.h" />
     <ClInclude Include="Strategy\DuckBehaviors.h" />
     <ClInclude Include="Strategy\Ducks.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Decorator\DecoratorMain.cpp" />
+    <ClCompile Include="Factory\FactoryMain.cpp" />
     <ClCompile Include="Observer\ObserverMain.cpp" />
     <ClCompile Include="Strategy\DucksTest.cpp" />
   </ItemGroup>
