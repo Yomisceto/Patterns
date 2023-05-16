@@ -127,6 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Adapter\Turkey.h" />
+    <ClInclude Include="Adapter\TurkeyAdapter.h" />
+    <ClInclude Include="Command\Command.h" />
+    <ClInclude Include="Command\Remotes.h" />
+    <ClInclude Include="Command\RemoteControl.h" />
     <ClInclude Include="Decorator\Beverage.h" />
     <ClInclude Include="Decorator\Coffee.h" />
     <ClInclude Include="Decorator\CoffeeDecorators.h" />
@@ -135,6 +140,7 @@
     <ClInclude Include="Factory\Pizza.h" />
     <ClInclude Include="Factory\PizzaIngredients.h" />
     <ClInclude Include="Factory\PizzaStore.h" />
+    <ClInclude Include="Iterator\Iterator.h" />
     <ClInclude Include="Observer\IObserver.h" />
     <ClInclude Include="Observer\ISubject.h" />
     <ClInclude Include="Observer\Observer.h" />
@@ -142,18 +148,33 @@
     <ClInclude Include="Observer\Weather Station\WeatherDisplays.h" />
     <ClInclude Include="Observer\Weather Station\IDisplayElement.h" />
     <ClInclude Include="Observer\Weather Station\WeatherData.h" />
+    <ClInclude Include="Proxy\ProxySubject.h" />
     <ClInclude Include="Singleton\Singleton.h" />
+    <ClInclude Include="State\GumballMachine.h" />
+    <ClInclude Include="Proxy\GumballMonitor.h" />
+    <ClInclude Include="State\MachineStates.h" />
     <ClInclude Include="Strategy\Duck.h" />
     <ClInclude Include="Strategy\DuckBehaviorsImpl.h" />
     <ClInclude Include="Strategy\DuckBehaviors.h" />
     <ClInclude Include="Strategy\Ducks.h" />
+    <ClInclude Include="Template Pattern\CaffeineBeverage.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Adapter\AdapterMain.cpp" />
+    <ClCompile Include="Command\RemoteControl.cpp" />
+    <ClCompile Include="Command\RemoteControlMain.cpp" />
     <ClCompile Include="Decorator\DecoratorMain.cpp" />
     <ClCompile Include="Factory\FactoryMain.cpp" />
+    <ClCompile Include="Iterator\IteratorMain.cpp" />
     <ClCompile Include="Observer\ObserverMain.cpp" />
+    <ClCompile Include="Proxy\ProxyMain.cpp" />
     <ClCompile Include="Singleton\SingletonMain.cpp" />
+    <ClCompile Include="State\GumballMachine.cpp" />
+    <ClCompile Include="Proxy\GumballMonitor.cpp" />
+    <ClCompile Include="State\MachineStates.cpp" />
+    <ClCompile Include="State\StateMain.cpp" />
     <ClCompile Include="Strategy\DucksTest.cpp" />
+    <ClCompile Include="Template Pattern\TemplateMain.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
