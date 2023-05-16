@@ -108,6 +108,30 @@
     <ClInclude Include="Proxy\ProxySubject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Compound\Ducks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Compound\Goose.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Compound\QuackCounter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Compound\Quackable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Compound\DuckFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Compound\Flock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Compound\QuackObservable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Compound\Quackologist.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Strategy\DucksTest.cpp">
@@ -153,6 +177,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Proxy\ProxyMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Compound\DuckSimulator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Compound\Flock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Compound\QuackObservable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

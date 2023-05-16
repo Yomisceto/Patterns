@@ -132,6 +132,14 @@
     <ClInclude Include="Command\Command.h" />
     <ClInclude Include="Command\Remotes.h" />
     <ClInclude Include="Command\RemoteControl.h" />
+    <ClInclude Include="Compound\DuckFactory.h" />
+    <ClInclude Include="Compound\Flock.h" />
+    <ClInclude Include="Compound\Goose.h" />
+    <ClInclude Include="Compound\Quackable.h" />
+    <ClInclude Include="Compound\QuackCounter.h" />
+    <ClInclude Include="Compound\Ducks.h" />
+    <ClInclude Include="Compound\QuackObservable.h" />
+    <ClInclude Include="Compound\Quackologist.h" />
     <ClInclude Include="Decorator\Beverage.h" />
     <ClInclude Include="Decorator\Coffee.h" />
     <ClInclude Include="Decorator\CoffeeDecorators.h" />
@@ -163,6 +171,9 @@
     <ClCompile Include="Adapter\AdapterMain.cpp" />
     <ClCompile Include="Command\RemoteControl.cpp" />
     <ClCompile Include="Command\RemoteControlMain.cpp" />
+    <ClCompile Include="Compound\DuckSimulator.cpp" />
+    <ClCompile Include="Compound\Flock.cpp" />
+    <ClCompile Include="Compound\QuackObservable.cpp" />
     <ClCompile Include="Decorator\DecoratorMain.cpp" />
     <ClCompile Include="Factory\FactoryMain.cpp" />
     <ClCompile Include="Iterator\IteratorMain.cpp" />
