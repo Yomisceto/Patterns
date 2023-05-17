@@ -4,6 +4,8 @@
 #include "QuackCounter.h"
 #include <memory>
 
+/** Abstract classs that can create ducks.
+    Class returns a raw pointers to new object. */
 class AbstractDuckFactory {
 
 public:
@@ -15,20 +17,22 @@ public:
 	virtual Quackable* createRubberDuck() = 0;
 };
 
+/** Factory that can create common ducks. */
 class DuckFactory : public AbstractDuckFactory {
 
 public:
 	Quackable* createMallardDuck() override { return new MallardDuck; }
 	Quackable* createRedheadDuck() override { return new RedheadDuck; }
-	Quackable* createDuckCall() override { return new DuckCall; }
-	Quackable* createRubberDuck() override { return new RubberDuck; }
+	Quackable* createDuckCall()    override { return new DuckCall; }
+	Quackable* createRubberDuck()  override { return new RubberDuck; }
 
 };
 
+/** Factory that can create counter ducks. */
 class CountingDuckFactory : public AbstractDuckFactory {
 public:
-	Quackable* createMallardDuck() override { return new QuackCounter(new MallardDuck, true); }
-	Quackable* createRedheadDuck() override { return new QuackCounter(new RedheadDuck, true); }
-	Quackable* createDuckCall() override { return new QuackCounter(new DuckCall, true); }
-	Quackable* createRubberDuck() override { return new QuackCounter(new RubberDuck, true); }
+	Quackable* createMallardDuck() override { return new QuackCounter(std::make_shared<MallardDuck>());}
+	Quackable* createRedheadDuck() override { return new QuackCounter(std::make_shared<RedheadDuck>()); }
+	Quackable* createDuckCall()    override { return new QuackCounter(std::make_shared <DuckCall>()); }
+	Quackable* createRubberDuck()  override { return new QuackCounter(std::make_shared <RubberDuck>()); }
 };

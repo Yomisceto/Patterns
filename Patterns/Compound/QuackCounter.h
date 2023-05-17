@@ -1,28 +1,28 @@
 #pragma once
 #include "Quackable.h"
+#include <memory> 
 
-// Add to ducks decorator 
+/** Duck decorator
+    that wraps it to an object that can also count total number of quacks made. */
 class QuackCounter : public Quackable {
 public:
-	explicit QuackCounter(Quackable* duck, bool toClean = false) : duck(duck), clean(toClean) { }
+	explicit QuackCounter(std::shared_ptr<Quackable> duck) : duck(duck) { }
+	QuackCounter(QuackCounter&&) = delete;
+	QuackCounter(const QuackCounter&) = delete;
 
 	void quack() override { duck->quack(); ++numberOfQuacks; }
 
-	static int getQuacks() { return numberOfQuacks; }
-
-	~QuackCounter() override { if (clean) delete duck; }\
-
-	// Observer
-	void registerObserver(Observer* observer) override { duck->registerObserver(observer); }
+	/** Observer methods */ 
 	void notifyObservers() override { duck->notifyObservers(); }
+	void registerObserver(Observer* observer) override { duck->registerObserver(observer); }
 
+	static int getQuacks() { return numberOfQuacks; }
 private:
-	// wraps a quackable duck
-	Quackable* duck;
-	// saves total number of all ducks quacked
+	/** Wraps a quackable duck. */
+	std::shared_ptr<Quackable> duck;
+
+	/** Saves total number of all ducks quacked. */
 	static int numberOfQuacks;
-    //
-	bool clean;
 };
 
 int QuackCounter::numberOfQuacks = 0;
