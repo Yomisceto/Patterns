@@ -9,20 +9,13 @@ public:
 	void honk() const { std::cout << "Honk" << std::endl; }
 };
 
-class GooseAdapter : public Quackable {
+class GooseAdapter : public BaseDuck {
 
 public:
-	GooseAdapter() : observable(new Observable(this)) {};
-	~GooseAdapter() override { delete observable; }
+	explicit GooseAdapter(Goose* goose) : BaseDuck::BaseDuck(), goose(goose) { }
 
-	// Observer
-	void registerObserver(Observer* observer) override { observable->registerObserver(observer); }
-	void notifyObservers() override { observable->notifyObservers(); }
-
-	explicit GooseAdapter(Goose* goose) : goose(goose) { }
-	void quack() override { goose->honk(); }
+	void quack() override { notifyObservers(); goose->honk(); }
 
 private:
 	Goose* goose;
-	Observable* observable;
 };

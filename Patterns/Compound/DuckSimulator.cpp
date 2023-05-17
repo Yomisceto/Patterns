@@ -32,10 +32,10 @@ void simulate(AbstractDuckFactory* duckFactory) {
 	std::cout << "Duck Simulator: With Goose Adapter" << std::endl;
 
 	Flock flockOfDucks;
-	flockOfDucks.add(mallardDuckCounter);
-	flockOfDucks.add(redheadDuckCounter);
-	flockOfDucks.add(duckCallCounter);
-	flockOfDucks.add(rubberDuckCounter);
+	//flockOfDucks.add(mallardDuckCounter);
+	//flockOfDucks.add(redheadDuckCounter);
+	//flockOfDucks.add(duckCallCounter);
+	//flockOfDucks.add(rubberDuckCounter);
 	flockOfDucks.add(gooseDuckCounter);
 
 	Quackologist quackologist;
@@ -49,7 +49,7 @@ void simulate(AbstractDuckFactory* duckFactory) {
 	delete redheadDuckCounter;
 	delete duckCallCounter;
 	delete rubberDuckCounter;
-	//delete gooseDuckCounter;
+	delete gooseDuckCounter;
 }
 void simulate(Quackable* quackable)
 {
