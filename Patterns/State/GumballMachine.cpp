@@ -2,13 +2,13 @@
 #include "MachineStates.h"
 #include <iostream>
 
-GumballMachine::GumballMachine(int count_, std::string location) : count(count_), location(location)
+GumballMachine::GumballMachine(int count_, const std::string& location) : count(count_), location(location)
 {
 	soldState = new SoldState(this);
+	winnerState = new WinnerState(this);
 	soldOutState = new SoldOutState(this);
 	noQuarterState = new NoQuarterState(this);
 	hasQuarterState = new HasQuarterState(this);
-	winnerState = new WinnerState(this);
 
 	if (count_ > 0) { state = noQuarterState; }
 }
@@ -39,9 +39,9 @@ void GumballMachine::releaseBall()
 	if (count != 0) --count;
 }
 
-void GumballMachine::refill(int count)
+void GumballMachine::refill(int toCount)
 {
-	this->count = count;
+	this->count = toCount;
 	state = noQuarterState;
 }
 

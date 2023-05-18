@@ -1,15 +1,16 @@
 #pragma once
 #include <iostream>
 
+// forward declare states of machine
 class MachineState;
 
+/** */
 class GumballMachine {
 public:
 	friend std::ostream& operator<<(std::ostream& os, const GumballMachine& gm);
 
-	GumballMachine(int count_, std::string location = "");
+	GumballMachine(int count_, const std::string& location = "");
 	
-
 	// machine functions
 	void insertQuarter();
 	void ejectQuarter();
@@ -39,11 +40,9 @@ private:
 	MachineState* soldOutState;
 	MachineState* noQuarterState;
 	MachineState* hasQuarterState;
-
 	MachineState* winnerState;
 
 	MachineState* state = soldOutState;
 	int count;
-	
 	std::string location;
 };

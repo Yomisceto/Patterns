@@ -1,6 +1,7 @@
 #pragma once
 #include "Beverage.h"
 
+/** Different drinks. */
 class Espresso : public Beverage {
 public:
 	Espresso() : Beverage("Espresso") {}

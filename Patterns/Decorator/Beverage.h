@@ -4,18 +4,18 @@
 #pragma once
 #include <string>
 
+/** Base drink class. */
 class Beverage {
 public:
-	explicit Beverage(const std::string& description = "Unknown Beverage") { description_ = description; }
+	explicit Beverage(const std::string& description = "Unknown Beverage") : description_(description) {  }
 	virtual ~Beverage() = default;
 	
 	virtual double cost() const = 0;
+
 	virtual std::string getDescription() const { return description_; };
 	virtual void setDescription(const std::string& description) { description_ = description; }
 private:
 	std::string description_;
 };
-
-
 
 #endif // !_BEVERAGE_H

@@ -3,12 +3,13 @@
 #include "GumballMachine.h"
 #include <random>
 
+/** Abstract machine state */
 class MachineState
 {
 public:
 	friend std::ostream& operator<<(std::ostream& os, const MachineState& machine);
 
-	MachineState(GumballMachine* gumballMachine_) : gumballMachine(gumballMachine_) {}
+	explicit MachineState(GumballMachine* gumballMachine_) : gumballMachine(gumballMachine_) {}
 
 	//virtual void insertQuarter() = 0;
 	//virtual void ejectQuarter() = 0;
@@ -35,7 +36,7 @@ private:
 class NoQuarterState : public MachineState
 {
 public:
-	NoQuarterState(GumballMachine* gumballMachine_) : MachineState(gumballMachine_) {}
+	using MachineState::MachineState;
 	
 	void insertQuarter() override;
 
@@ -49,7 +50,7 @@ public:
 class HasQuarterState : public MachineState
 {
 public:
-	HasQuarterState(GumballMachine* gumballMachine_);
+	explicit HasQuarterState(GumballMachine* gumballMachine_);
 
 	void ejectQuarter() override;
 	void turnCrank() override;
@@ -62,13 +63,13 @@ public:
 private:
 	// random generator
 	std::default_random_engine random_engine;
-	std::uniform_int_distribution<int> distribution;
+	std::uniform_int_distribution<int> distribution = std::uniform_int_distribution<int>(0, 10);
 };
 
 class SoldState : public MachineState
 {
 public:
-	SoldState(GumballMachine* gumballMachine_) : MachineState(gumballMachine_) {}
+	using MachineState::MachineState;
 
 	void dispense() override;
 
@@ -78,7 +79,7 @@ public:
 class SoldOutState : public MachineState
 {
 public:
-	SoldOutState(GumballMachine* gumballMachine_) : MachineState(gumballMachine_) {}
+	using MachineState::MachineState;
 
 	void insertQuarter() override { std::cout << "You can't insert a quarter, the machine is sold out" << std::endl; }
 	void ejectQuarter() override { std::cout << "You can't eject, you haven't inserted a quarter yet" << std::endl; }
@@ -91,7 +92,7 @@ public:
 class WinnerState : public MachineState {
 
 public:
-	WinnerState(GumballMachine* gumballMachine_) : MachineState(gumballMachine_) {}
+	using MachineState::MachineState;
 
 	void dispense() override;
 

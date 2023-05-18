@@ -4,6 +4,8 @@
 
 void print(const std::string&);
 
+/** Duck behaviour implementations .*/
+
 struct FlyWithWings : public FlyBehavior {
 	void fly() override { print("Flying with wings."); }
 };

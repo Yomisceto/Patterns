@@ -1,36 +1,39 @@
 #include <iostream>
 #include "TurkeyAdapter.h"
 
-void TestDuck(ADuck* duck)
+void simulate(const ADuck* duck);
+void AdapterTest();
+
+
+//int main(void)
+//{
+//	AdapterTest();
+//	return 0;
+//}
+void AdapterTest()
+{
+	std::shared_ptr<ATurkey> turkey = std::make_shared<AWildTurkey>();
+
+	std::unique_ptr<ADuck> turkeyAdapter(std::make_unique<TurkeyAdapter>(turkey));
+	std::unique_ptr<ADuck> duck(std::make_unique<AMallardDuck>());
+
+	ClassTurkeyAdapter classTurkeyAdapter;
+
+	std::cout << "Turkey.." << std::endl;
+	turkey->gobble();
+	turkey->fly();
+
+	std::cout << "Duck.." << std::endl;
+	simulate(duck.get());
+
+	std::cout << "AdapterTurkey.." << std::endl;
+	simulate(turkeyAdapter.get());
+
+	std::cout << "ClassAdapterTurkey.." << std::endl;
+	simulate(&classTurkeyAdapter);
+}
+void simulate(const ADuck* duck)
 {
 	duck->quack();
 	duck->fly();
 }
-void DuckTest() {
-	AMallardDuck duck;
-	AWildTurkey turkey;
-
-	ADuck* turkeyAdapter = new TurkeyAdapter(&turkey);
-	ClassTurkeyAdapter classTurkeyAdapter;
-
-	std::cout << "Turkey.." << std::endl;
-	turkey.gobble();
-	turkey.fly();
-
-	std::cout << "Duck.." << std::endl;
-	TestDuck(&duck);
-
-	std::cout << "AdapterTurkey.." << std::endl;
-	TestDuck(turkeyAdapter);
-
-	std::cout << "ClassAdapterTurkey.." << std::endl;
-	TestDuck(&classTurkeyAdapter);
-
-	delete turkeyAdapter;
-}
-//
-//int main(void)
-//{
-//	DuckTest();
-//	return 0;
-//}

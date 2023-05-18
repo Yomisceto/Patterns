@@ -9,9 +9,7 @@ std::ostream& operator<<(std::ostream& os, const MachineState& machine)
 // constructors
 HasQuarterState::HasQuarterState(GumballMachine* gumballMachine_) : MachineState(gumballMachine_) {
 	random_engine.seed(std::time(0));
-	distribution = std::uniform_int_distribution<int>(0, 10);
 }
-
 
 // states methods 
 void HasQuarterState::turnCrank() {

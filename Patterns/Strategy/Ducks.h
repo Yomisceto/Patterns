@@ -1,39 +1,40 @@
 #pragma once
 
 #include "Duck.h"
-// just to simplify I added all ducks in one file
 
+/** Ducks classes sets manually new behaviour, so there is no need to override fly() and quack(). */
+/** */
 struct MallardDuck : public Duck {
 	MallardDuck() {
-		setFlyBehaviour(new FlyWithWings());
-		setQuackBehaviour(new Quack());
+		setFlyBehaviour(std::make_unique<FlyWithWings>());
+		setQuackBehaviour(std::make_unique<Quack>());
 	}
-	std::ostream& display(std::ostream& os) { return os << "looks like a mallard."; }
+	std::ostream& display(std::ostream& os) const override { return os << "looks like a mallard."; }
 };
 
 struct RedHeadDuck : public Duck {
 	RedHeadDuck() {
-		setFlyBehaviour(new FlyWithWings());
-		setQuackBehaviour(new Quack());
+		setFlyBehaviour(std::make_unique<FlyWithWings>());
+		setQuackBehaviour(std::make_unique<Quack>());
 	}
 
-	std::ostream& display(std::ostream& os) { return os << "looks like a redhead."; }
+	std::ostream& display(std::ostream& os) const override { return os << "looks like a redhead."; }
 };
 
 struct RubberDuck : public Duck {
 	RubberDuck() {
-		setFlyBehaviour(new FlyNoWay());
-		setQuackBehaviour(new Squeak());
+		setFlyBehaviour(std::make_unique<FlyNoWay>());
+		setQuackBehaviour(std::make_unique<Squeak>());
 	}
 
-	std::ostream& display(std::ostream& os) { return os << "looks like a rubberduck."; }
+	std::ostream& display(std::ostream& os) const override { return os << "looks like a rubberduck."; }
 };
 
 struct DecoyDuck : public Duck {
 	DecoyDuck() {
-		setFlyBehaviour(new FlyNoWay());
-		setQuackBehaviour(new MuteQuack());
+		setFlyBehaviour(std::make_unique<FlyNoWay>());
+		setQuackBehaviour(std::make_unique<MuteQuack>());
 	}
 
-	std::ostream& display(std::ostream& os) { return os << "looks like a decoy duck"; }
+	std::ostream& display(std::ostream& os) const override { return os << "looks like a decoy duck"; }
 };
