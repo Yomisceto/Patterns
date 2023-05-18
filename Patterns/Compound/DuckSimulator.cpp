@@ -12,15 +12,15 @@ void simulate(AbstractDuckFactory* duckFactory);
 // Simulate any Quackable behaviour
 void simulate(Quackable* quackable);
 
-int main(void)
-{
-	// Factory with counter ducks
-	std::unique_ptr<AbstractDuckFactory> factory(std::make_unique<CountingDuckFactory>());
-	
-	simulate(factory.get());
-	
-	return 0;
-}
+//int main(void)
+//{
+//	// Factory with counter ducks
+//	std::unique_ptr<AbstractDuckFactory> factory(std::make_unique<CountingDuckFactory>());
+//	
+//	simulate(factory.get());
+//	
+//	return 0;
+//}
 
 void simulate(AbstractDuckFactory* duckFactory) {
 	

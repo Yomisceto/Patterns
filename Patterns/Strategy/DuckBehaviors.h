@@ -1,13 +1,15 @@
 #pragma once
 
+/** Duck behaviour interfaces.*/
+
 struct FlyBehavior {
 	virtual void fly() = 0;
 
-	~FlyBehavior() = default;
+	virtual ~FlyBehavior() = default;
 };
 
 struct QuackBehavior {
 	virtual void quack() = 0;
 
-	~QuackBehavior() = default;
+	virtual ~QuackBehavior() = default;
 };

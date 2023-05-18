@@ -132,6 +132,9 @@
     <ClInclude Include="Compound\Quackologist.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Adapter\Duck.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Strategy\DucksTest.cpp">

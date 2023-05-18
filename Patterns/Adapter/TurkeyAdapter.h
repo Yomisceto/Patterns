@@ -1,26 +1,25 @@
 #pragma once
 #include "Turkey.h"
-using namespace Adapter;
+#include "Duck.h"
 
 /** Object adapter - uses composition */
 class TurkeyAdapter : public ADuck {
 public:
-	TurkeyAdapter(ATurkey* turkey_) : turkey(turkey_) {}
+	explicit TurkeyAdapter(std::shared_ptr<ATurkey> turkey) : turkey(turkey) {}
 
-	void quack() override { turkey->gobble(); }
+	void quack() const override { turkey->gobble(); }
 	
 	/** Turkey makes short fly, so it's need to call it more times */
-	void fly() override { for (auto i = 0; i < 5; ++i) { turkey->fly(); } }
+	void fly() const override { for (auto i = 0; i < 5; ++i) { turkey->fly(); } }
 
 private:
-
-	ATurkey* turkey;
+	std::shared_ptr<ATurkey> turkey;
 };
 
 /** Class adapter - uses inheritance */
 class ClassTurkeyAdapter : public ADuck, public AWildTurkey
 {
 public:
-	void quack() override { gobble();}
-	void fly() override { /***/ AWildTurkey::fly(); }
+	void quack() const override { gobble();}
+	void fly() const override { for (auto i = 0; i < 5; ++i) { AWildTurkey::fly(); } }
 };

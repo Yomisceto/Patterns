@@ -5,16 +5,15 @@
 #include <iostream>
 
 //int main() {
-//	Beverage* espresso = new Espresso;
-//	Beverage* houseBlend = new HouseBlend;
-//	Beverage* e_milk = new Milk(espresso);
-//	Beverage* e_mi_mocha = new Mocha(e_milk);
+//
+//	using Beverage_ptr = std::shared_ptr<Beverage>;
+//
+//	Beverage_ptr espresso = std::make_shared<Espresso>();
+//	Beverage_ptr houseBlend = std::make_shared<HouseBlend>();
+//	Beverage_ptr e_milk = std::make_shared<Milk>(espresso.get());
+//	Beverage_ptr e_mi_mocha = std::make_shared<Mocha>(e_milk.get());
 //
 //	std::cout << e_mi_mocha->getDescription() << " costs: " << e_mi_mocha->cost() << std::endl;
-//	
-//	delete espresso;
-//	delete e_milk;
-//	delete e_mi_mocha;
 //
 //	return 0;
 //}

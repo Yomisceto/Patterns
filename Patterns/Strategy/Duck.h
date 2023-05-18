@@ -9,25 +9,24 @@
 #include "DuckBehaviorsImpl.h"
 
 struct Duck {
-private:
-	FlyBehavior* flyBehavior;
-	QuackBehavior* quackBehavior;
 public:
-	void setFlyBehaviour(FlyBehavior* behavior) { flyBehavior = behavior; }
-	void setQuackBehaviour(QuackBehavior* behavior) { quackBehavior = behavior; }
+	virtual ~Duck() = default;
 
-	virtual void fly() { flyBehavior->fly(); }
-	virtual void quack() { quackBehavior->quack(); }
+	void setFlyBehaviour(std::unique_ptr<FlyBehavior> behavior) { flyBehavior = std::move(behavior); }
+	void setQuackBehaviour(std::unique_ptr<QuackBehavior> behavior) { quackBehavior = std::move(behavior); }
 
-	virtual void swim() { std::cout << "all ducks swim." << std::endl; };
-	virtual std::ostream& display(std::ostream&) = 0;
-	// others duck methods
-	virtual ~Duck();
+	/** Base class just call behaviour mehtods. */
+	virtual void fly() const { flyBehavior->fly(); }
+	virtual void quack() const { quackBehavior->quack(); }
+	
+	virtual void swim() const { std::cout << "all ducks swim." << std::endl; };
+
+	virtual std::ostream& display(std::ostream&) const = 0;
+private:
+	// Uses composite to hold behaviour, not inheritance
+	std::unique_ptr<FlyBehavior> flyBehavior;
+	std::unique_ptr<QuackBehavior> quackBehavior;
 };
 
-Duck::~Duck() {
-	delete flyBehavior;
-	delete quackBehavior;
-}
 
 #endif // DUCK_H
