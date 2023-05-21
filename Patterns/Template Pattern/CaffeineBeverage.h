@@ -2,9 +2,11 @@
 #include <iostream>
 #include <string>
 
-class CaffeineBeverage
-{
+/** General class for beverage that handle the algorithm. */
+class CaffeineBeverage {
 public:
+	virtual ~CaffeineBeverage() = default;
+
 	/** This is template method */
 	void prepareRecipe() 
 	{
@@ -13,50 +15,33 @@ public:
 		brew();								// handled by subclass
 		pourInCup();						// handled by a class
 
-		if (customerWantsCondiments())
-		addCondiments();					// handled by subclass
+		if (customerWantsCondiments()) {
+			addCondiments();				// handled by subclass
+		}
 	}
-
+	
+	/** By overriding this methods, behaviour is controlled. */
 	virtual void brew() = 0;
 	virtual void addCondiments() = 0;
 
-	void boilWater()
-	{
-		std::cout << "Boiling water" << std::endl;
-	}
+	/** Its common behaviour for all caffeine drinks. */
+	void boilWater() const { std::cout << "Boiling water" << std::endl; }
+	void pourInCup() const { std::cout << "Pouring into cup" << std::endl;}
 
-	void pourInCup()
-	{
-		std::cout << "Pouring into cup" << std::endl;
-	}
-
-	virtual bool customerWantsCondiments()
-	{
-		return true;
-	}
+	/** Override and control when user wants condiment. */
+	virtual bool customerWantsCondiments() { return true; }
 };
+
+
 class CoffeeWithHook : public CaffeineBeverage
 {
 public:
 	void brew() override { std::cout << "Dripping Coffee through filter" << std::endl; }
 	void addCondiments() override { std::cout << "Adding Sugar and Milk" << std::endl; }
-	bool customerWantsCondiments() override
-	{
-		std::string answer = getUserInput();
 
-		if (answer.size() > 0 && std::tolower(answer[0]) == 'y') return true;
-		else return false;
-	}
+	bool customerWantsCondiments() override;
 
-	std::string getUserInput()
-	{
-		std::string input = "";
-		std::cout << "Would you like milk and sugar with your coffee (y/n) ? " << std::endl;
-
-		std::getline(std::cin, input);
-	
-		return input;
-	}
+	std::string getUserInput() const;
 };
 
 class Tea : public CaffeineBeverage

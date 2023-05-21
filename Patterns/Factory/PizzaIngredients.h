@@ -3,6 +3,7 @@
 #include <iostream>
 
 /** Just for example it's not interfaces */
+/** A lot of ingredients for pizza */
 class PizzaIngredient {
 public:
 	virtual ~PizzaIngredient() = default;
