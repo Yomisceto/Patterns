@@ -152,8 +152,6 @@
     <ClInclude Include="Iterator\Iterator.h" />
     <ClInclude Include="Observer\IObserver.h" />
     <ClInclude Include="Observer\ISubject.h" />
-    <ClInclude Include="Observer\Observer.h" />
-    <ClInclude Include="Observer\Subject.h" />
     <ClInclude Include="Observer\Weather Station\WeatherDisplays.h" />
     <ClInclude Include="Observer\Weather Station\IDisplayElement.h" />
     <ClInclude Include="Observer\Weather Station\WeatherData.h" />
@@ -179,6 +177,8 @@
     <ClCompile Include="Factory\FactoryMain.cpp" />
     <ClCompile Include="Iterator\IteratorMain.cpp" />
     <ClCompile Include="Observer\ObserverMain.cpp" />
+    <ClCompile Include="Observer\Weather Station\WeatherData.cpp" />
+    <ClCompile Include="Observer\Weather Station\WeatherDisplays.cpp" />
     <ClCompile Include="Proxy\ProxyMain.cpp" />
     <ClCompile Include="Singleton\SingletonMain.cpp" />
     <ClCompile Include="State\GumballMachine.cpp" />
@@ -186,6 +186,7 @@
     <ClCompile Include="State\MachineStates.cpp" />
     <ClCompile Include="State\StateMain.cpp" />
     <ClCompile Include="Strategy\DucksTest.cpp" />
+    <ClCompile Include="Template Pattern\CaffeineBeverage.cpp" />
     <ClCompile Include="Template Pattern\TemplateMain.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

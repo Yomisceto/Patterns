@@ -13,6 +13,7 @@ GumballMachine::GumballMachine(int count_, const std::string& location) : count(
 	if (count_ > 0) { state = noQuarterState; }
 }
 
+/** Gumball operations delegate work to current state. */
 void GumballMachine::insertQuarter()
 {
 	state->insertQuarter();

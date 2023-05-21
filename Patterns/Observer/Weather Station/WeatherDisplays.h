@@ -1,19 +1,22 @@
 #pragma once
-#include "../Observer.h"
 #include "IDisplayElement.h"
 #include "WeatherData.h"
-/** keep displays on purpose in one file, so we don't make a lot of files. */
+
+/** Base display of weather. */
 class CurrentConditionsDisplay : public IObserver, public IDisplayElement {
 
 public:
-	explicit CurrentConditionsDisplay(WeatherData& weatherData) 
-		: weatherData_(weatherData) { this->weatherData_.Attach(this); }
-	void Update() override;
+	explicit CurrentConditionsDisplay(WeatherData* weatherData) 
+		: weatherData_(weatherData) { this->weatherData_->Attach(this); }
 
-	virtual void Display() override;
+	void Update() override;
+	void Display() override;
 
 protected:
-	WeatherData& weatherData_;
+	float getTemperature() const { return temperature_; }
+
+private:
+	WeatherData* weatherData_;
 
 	/** parameters to create weather report */
 	float humidity_ = 0.f;
@@ -21,21 +24,12 @@ protected:
 	float temperature_ = 0.f;
 };
 
-void CurrentConditionsDisplay::Update() {
-	this->temperature_ = weatherData_.GetTemperature();
-	this->humidity_ = weatherData_.GetHumidity();
-	this->pressure_ = weatherData_.GetPressure();
-	Display();
-}
-
-void CurrentConditionsDisplay::Display() {
-	std::cout << "Current conditions: " << temperature_
-		<< "C degrees, " << humidity_ << "% humidity and " << pressure_ << " pressure" << std::endl;
-}
-
-/** Simple display just for an example */
+/** Simple display just for an example. */
 class ShortConditionsDisplay : public CurrentConditionsDisplay {
+
+	using CurrentConditionsDisplay::CurrentConditionsDisplay;
+
 	void Display() override {
-		std::cout << "Current short conditions: " << temperature_ << "C degrees" << std::endl;
+		std::cout << "Current short conditions: " << getTemperature() << "C degrees" << std::endl;
 	}
 };

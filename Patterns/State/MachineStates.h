@@ -33,6 +33,7 @@ private:
 	GumballMachine* gumballMachine;
 };
 
+/** Idle, when no quarter. */
 class NoQuarterState : public MachineState
 {
 public:
@@ -47,6 +48,7 @@ public:
 	std::string getName() const override { return "NoQuarterState"; }
 };
 
+/** Quarter inserted. */
 class HasQuarterState : public MachineState
 {
 public:
@@ -66,6 +68,7 @@ private:
 	std::uniform_int_distribution<int> distribution = std::uniform_int_distribution<int>(0, 10);
 };
 
+/** Gum is dispenced. */
 class SoldState : public MachineState
 {
 public:
@@ -76,6 +79,7 @@ public:
 	std::string getName() const override { return "SoldState"; }
 };
 
+/** No gums left in machine. */
 class SoldOutState : public MachineState
 {
 public:
@@ -89,6 +93,7 @@ public:
 	std::string getName() const override { return "SoldOutState"; }
 };
 
+/** Chance of getting secong gum when turn trunk. */
 class WinnerState : public MachineState {
 
 public:

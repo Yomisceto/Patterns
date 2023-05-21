@@ -1,5 +1,6 @@
 
 #include "RemoteControl.h"
+#include <array>
 
 void LightOn() {
 	auto remote = new SimpleRemoteControl;
@@ -19,133 +20,117 @@ void LightOn() {
   Using Commands objects to execute commands of remote objects */	
 void RemoteLoader() {
 
-	RemoteControl* remoteControl = new RemoteControl;
+	// Controller
+	RemoteControl remoteControl;
 	
-	/** Remotes pointers */
-	Light* livingRoomLight = new Light("Living Room Light");
-	Light* kitchenLight = new Light("Kitchen Light");
-	Stereo* stereo = new Stereo("Living Room Stereo");
+	// Remotes 
+	Light livingRoomLight("Living Room Light");
+	Light kitchenLight("Kitchen Light");
+	Stereo stereo("Living Room Stereo");
 
-	/** Command pointers */
-	LightOnCommand* livingRoomLightOn = new LightOnCommand(livingRoomLight);
-	LightOffCommand* livingRoomLightOff = new LightOffCommand(livingRoomLight);
-	LightOnCommand* kitchenLightOn = new LightOnCommand(kitchenLight);
-	LightOffCommand* kitchenLightOff = new LightOffCommand(kitchenLight);
-	StereoOnWithCDCommand* stereoOn = new StereoOnWithCDCommand(stereo);
-	StereoOffCommand* stereoOff = new StereoOffCommand(stereo);
+	// Commands 
+	LightOnCommand livingRoomLightOn(&livingRoomLight);
+	LightOffCommand livingRoomLightOff(&livingRoomLight);
+	LightOnCommand kitchenLightOn(&kitchenLight);
+	LightOffCommand kitchenLightOff(&kitchenLight);
+	StereoOnWithCDCommand stereoOn(&stereo);
+	StereoOffCommand stereoOff(&stereo);
 
-	remoteControl->setCommand(0, livingRoomLightOn, livingRoomLightOff );
-	remoteControl->setCommand(1, kitchenLightOn, kitchenLightOff);
-	remoteControl->setCommand(2, stereoOn, stereoOff);
+	// Bind commands
+	remoteControl.setCommand(0, &livingRoomLightOn, &livingRoomLightOff );
+	remoteControl.setCommand(1, &kitchenLightOn, &kitchenLightOff);
+	remoteControl.setCommand(2, &stereoOn, &stereoOff);
 
-	/** Pushing buttons */
-	remoteControl->onButtonPushed(0);
-	remoteControl->offButtonPushed(0);
-	remoteControl->onButtonPushed(1);
-	remoteControl->offButtonPushed(1);
-	remoteControl->onButtonPushed(2);
-	remoteControl->offButtonPushed(2);
+	// Execute commands
+	remoteControl.onButtonPushed(0);
+	remoteControl.offButtonPushed(0);
+	remoteControl.onButtonPushed(1);
+	remoteControl.offButtonPushed(1);
+	remoteControl.onButtonPushed(2);
+	remoteControl.offButtonPushed(2);
 
-	delete remoteControl;
-
-	delete livingRoomLightOn;
-	delete livingRoomLightOff;
-
-	delete kitchenLightOn;
-	delete kitchenLightOff;
-
-	delete stereoOn;
-	delete stereoOff;
-
-	delete kitchenLight;
-	delete stereo;
-	delete livingRoomLight;
 }
 void RemoteLoaderWithUndo()
 {
-	RemoteControlWithUndo* remoteControl = new RemoteControlWithUndo;
-	Light* livingRoomLight = new Light("Living Room");
-	LightOnCommand* livingRoomLightOn = new LightOnCommand(livingRoomLight);
-	LightOffCommand* livingRoomLightOff = new LightOffCommand(livingRoomLight);
+	// Controller
+	RemoteControlWithUndo remoteControl;
 
-	remoteControl->setCommand(0, livingRoomLightOn, livingRoomLightOff);
-	
-	remoteControl->onButtonWasPushed(0);
-	remoteControl->offButtonWasPushed(0);
-	remoteControl->undoButtonWasPushed();
+	// Remote
+	Light livingRoomLight("Living Room");
 
-	delete remoteControl;
-	delete livingRoomLight;
-	delete livingRoomLightOn;
-	delete livingRoomLightOff;
+	// Commands
+	LightOnCommand livingRoomLightOn(&livingRoomLight);
+	LightOffCommand livingRoomLightOff(&livingRoomLight);
 
+	// Bind command
+	remoteControl.setCommand(0, &livingRoomLightOn, &livingRoomLightOff);
+
+	// Execute commands
+	remoteControl.onButtonWasPushed(0);
+	remoteControl.offButtonWasPushed(0);
+	remoteControl.undoButtonWasPushed();
 }
 void RemoteLoaderFan()
 {
-	RemoteControlWithUndo* remoteControl = new RemoteControlWithUndo;
+	// Controller
+	RemoteControlWithUndo remoteControl;
 
-	CeilingFan* ceilingFan = new CeilingFan("Living Room");
+	// Remote
+	CeilingFan ceilingFan("Living Room");
 
-	CeilingFanMediumCommand* ceilingFanMedium = new CeilingFanMediumCommand(ceilingFan);
-	CeilingFanHighCommand* ceilingFanHigh = new CeilingFanHighCommand(ceilingFan);
-	CeilingFanOffCommand* ceilingFanOff = new CeilingFanOffCommand(ceilingFan);
+	// Commands
+	CeilingFanMediumCommand ceilingFanMedium(&ceilingFan);
+	CeilingFanHighCommand ceilingFanHigh(&ceilingFan);
+	CeilingFanOffCommand ceilingFanOff(&ceilingFan);
 
-	remoteControl->setCommand(0, ceilingFanMedium, ceilingFanOff);
-	remoteControl->setCommand(1, ceilingFanHigh, ceilingFanOff);
+	// Bind commands
+	remoteControl.setCommand(0, &ceilingFanMedium, &ceilingFanOff);
+	remoteControl.setCommand(1, &ceilingFanHigh, &ceilingFanOff);
 
-	remoteControl->onButtonWasPushed(0);
-	remoteControl->offButtonWasPushed(0);
-	remoteControl->undoButtonWasPushed(); 
-
-	remoteControl->onButtonWasPushed(1);
-	remoteControl->undoButtonWasPushed(); 
-
-	delete remoteControl;
-	delete ceilingFan;
-	delete ceilingFanMedium;
-	delete ceilingFanHigh;
-	delete ceilingFanOff;
+	// Execute commands
+	remoteControl.onButtonWasPushed(0);
+	remoteControl.offButtonWasPushed(0);
+	remoteControl.undoButtonWasPushed(); 
+	remoteControl.onButtonWasPushed(1);
+	remoteControl.undoButtonWasPushed();
 }
 void RemoteLoaderMacro()
 {
-	Light* light = new Light("Living Room Light");
-	Stereo* stereo = new Stereo("Living Room Stereo");
+	// Remotes
+	Light light("Living Room Light");
+	Stereo stereo("Living Room Stereo");
 
-	LightOnCommand* lightOn = new LightOnCommand(light);
-	LightOffCommand* lightOff = new LightOffCommand(light);
-	StereoOnWithCDCommand* stereoOn = new StereoOnWithCDCommand(stereo);
-	StereoOffCommand* stereoOff = new StereoOffCommand(stereo);
+	// Controller
+	RemoteControlWithUndo remoteControl;
 
-	Command* partyOn[] { lightOn, stereoOn };
-	Command* partyOff[] { lightOff, stereoOff };
+	// Commands
+	LightOnCommand lightOn(&light);
+	LightOffCommand lightOff(&light);
+	StereoOnWithCDCommand stereoOn(& stereo);
+	StereoOffCommand stereoOff(&stereo);
 
-	MacroCommand* partyOnMacro = new MacroCommand(partyOn, 2);
-	MacroCommand* partyOffMacro = new MacroCommand(partyOff, 2);
+	// Macro Commands
+	Command* partyOn[] { &lightOn, &stereoOn };
+	Command* partyOff[] { &lightOff, &stereoOff };
+	MacroCommand partyOnMacro(partyOn, 2);
+	MacroCommand partyOffMacro(partyOff, 2);
+	
+	// Bind Macro Command
+	remoteControl.setCommand(0, &partyOnMacro, &partyOffMacro);
 
-	RemoteControlWithUndo* remoteControl = new RemoteControlWithUndo;
-	remoteControl->setCommand(0, partyOnMacro, partyOffMacro);
-	remoteControl->onButtonWasPushed(0);
-	remoteControl->offButtonWasPushed(0);
+	// Execute commands
+	remoteControl.onButtonWasPushed(0);
+	remoteControl.offButtonWasPushed(0);
 
 	// Stereo should save data to undo correctly
-	remoteControl->undoButtonWasPushed();
-
-	delete remoteControl;
-	delete partyOnMacro;
-	delete partyOffMacro;
-	delete lightOn;
-	delete stereoOn;
-	delete stereoOff;
-	delete lightOff;
-	delete light;
-	delete stereo;
+	remoteControl.undoButtonWasPushed();
 }
 
-//int main() {
-//	RemoteLoaderMacro();
-//	//RemoteLoaderFan();
-//	//RemoteLoaderWithUndo();
-//	//RemoteLoader();
-//
-//	return 0;
-//}
+int main() {
+	RemoteLoaderMacro();
+	//RemoteLoaderFan();
+	//RemoteLoaderWithUndo();
+	//RemoteLoader();
+
+	return 0;
+}

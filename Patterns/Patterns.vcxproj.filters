@@ -33,12 +33,6 @@
     <ClInclude Include="Observer\ISubject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Observer\Subject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Observer\Observer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Observer\Weather Station\WeatherData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -189,6 +183,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Compound\QuackObservable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Template Pattern\CaffeineBeverage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Observer\Weather Station\WeatherData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Observer\Weather Station\WeatherDisplays.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
