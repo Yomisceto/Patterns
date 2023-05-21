@@ -12,7 +12,7 @@ template<typename T, typename U>
 class Iterator
 {
 public:
-	typedef typename std::vector<T>::iterator iter_type;
+	using iter_type = typename std::vector<T>::iterator;
 	Iterator(U* p_data, bool reverse = false) : m_p_data_(p_data)
 	{
 		m_it_ = m_p_data_->getVector().begin();
@@ -64,11 +64,11 @@ private:
 
 class Data {
 public:
-	Data(int a = 0) : m_data_(a) {}
+	explicit Data(int a = 0) : m_data_(a) {}
 
 	void set_data(int a) { m_data_ = a; }
 
-	int data() { return m_data_; }
+	int data() const { return m_data_; }
 
 private:
 	int m_data_;

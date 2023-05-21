@@ -126,11 +126,11 @@ void RemoteLoaderMacro()
 	remoteControl.undoButtonWasPushed();
 }
 
-int main() {
-	RemoteLoaderMacro();
-	//RemoteLoaderFan();
-	//RemoteLoaderWithUndo();
-	//RemoteLoader();
-
-	return 0;
-}
+//int main() {
+//	RemoteLoaderMacro();
+//	RemoteLoaderFan();
+//	RemoteLoaderWithUndo();
+//	RemoteLoader();
+//
+//	return 0;
+//}

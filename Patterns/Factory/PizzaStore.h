@@ -5,16 +5,19 @@
 #include "Pizza.h"
 #include "PizzaIngredientFactory.h"
 
+/** Pizza Factory. */
 class PizzaStore {
 public:
 	enum class PizzaType {
 		CheesePiza, ClamPizza
 	};
 
-	virtual ~PizzaStore() { delete ingredientFactory; };
+	virtual ~PizzaStore() = default;
 
+	/** Every derived factory implements it's way to create Pizza. */
 	virtual Pizza* createPizza(PizzaType type) const = 0;
 
+	/** Default pizza order. */
 	virtual void orderPizza(PizzaType type) const {
 		Pizza* pizza = createPizza(type);
 		pizza->prepare();
@@ -25,13 +28,13 @@ public:
 		delete pizza;
 	}
 
-	IPizzaIngredientFactory* ingredientFactory = nullptr;
+	std::unique_ptr<IPizzaIngredientFactory> ingredientFactory = nullptr;
 };
 
 /** Only one pizza store for reference. */
 class NYPizzaStore : public PizzaStore {
 public:
-	NYPizzaStore() { ingredientFactory = new NYPizzaIngredientFactory; }
+	NYPizzaStore() { ingredientFactory = std::make_unique<NYPizzaIngredientFactory>(); }
 
 	Pizza* createPizza(PizzaType type) const override 
 	{
@@ -39,11 +42,11 @@ public:
 
 		switch (type) {
 		case PizzaStore::PizzaType::CheesePiza:
-			pizza = new CheesePizza(ingredientFactory);
+			pizza = new CheesePizza(ingredientFactory.get());;
 			pizza->setName("New York Style Cheese Pizza"); 
 			break;
 		case PizzaStore::PizzaType::ClamPizza:
-			pizza = new CheesePizza(ingredientFactory);
+			pizza = new CheesePizza(ingredientFactory.get());
 			pizza->setName("New York Style Clam Pizza"); 
 			break;
 		default:

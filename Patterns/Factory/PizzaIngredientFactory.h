@@ -6,6 +6,7 @@
 #include <vector>
 #include <iostream>
 
+/** Ingredient factory, every PizzaStore has its own default ingredients. */
 class IPizzaIngredientFactory {
 public:
 	virtual ~IPizzaIngredientFactory() = default;
@@ -18,14 +19,17 @@ public:
 	virtual std::vector<Veggies*> createVeggies() const = 0;
 
 	std::string getName() const { return name_; }
+
 protected:
+	void setName(const std::string& name) { name_ = name; }
+private:
 	std::string name_;
 };
 
-
+/** Default ingredients for NYPizza is used. */
 class NYPizzaIngredientFactory : public IPizzaIngredientFactory {
 public:
-	NYPizzaIngredientFactory() { name_ = "NY Pizza Factory"; }
+	NYPizzaIngredientFactory() { setName("NY Pizza Factory"); }
 
 	Dough* createDough() const override {
 		std::cout << "Add Thin Crust Dough" << std::endl;

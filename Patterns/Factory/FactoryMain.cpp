@@ -1,12 +1,15 @@
 #include "PizzaStore.h" 
 
-//
-//int main() {
-//
-//	PizzaStore* pPizza = new NYPizzaStore;
-//	pPizza->orderPizza(PizzaStore::PizzaType::CheesePiza);
-//	std::cout << std::endl;
-//
-//	delete pPizza;
-//	return 0;
-//}
+void OrderPizza();
+
+int main() {
+
+	OrderPizza();
+	return 0;
+}
+  
+void OrderPizza()
+{
+	std::unique_ptr<PizzaStore> pizzaStore = std::make_unique<NYPizzaStore>();
+	pizzaStore->orderPizza(PizzaStore::PizzaType::CheesePiza);
+}
